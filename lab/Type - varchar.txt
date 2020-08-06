@@ -1,0 +1,30 @@
+use test;
+
+drop table Lab;
+
+create table Lab
+(
+  id int auto_increment unique,
+  data varchar(5) not null
+);
+
+insert into Lab (data) values ('123');
+insert into Lab (data) values ('1234567');
+insert into Lab (data) values (' 12 ');
+
+select id, concat('*', data, '*') as dataField
+  from Lab;
+
+８２年１月１日摩羯
+小白
+僑光
+師大研究所
+
+大甲
+精武火車站隔壁
+ Ｏ
+ １
+ 弟弟
+ 田徑隊
+ 跳高跳遠
+ 半小時上下班
