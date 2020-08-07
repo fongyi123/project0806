@@ -86,3 +86,27 @@ select version();---檢查版本
 show variables like 'data%';
 
 
+/Applications/MAMP/Library/bin/mysql -uroot -p
+
+cd /Applications/MAMP/Library/bin/
+
+
+
+
+
+
+
+
+
+prod
+        pid .....qty
+        1        100
+
+
+甲                           乙
+
+100 <--------------
+-20-------------->80
+                    ------->80 (dirty read)
+-10
+    ------------->70*
