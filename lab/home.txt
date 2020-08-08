@@ -1,24 +1,9 @@
--- MySQL dump 10.9
---
--- Host: localhost    Database: homework0807
--- ------------------------------------------------------
--- Server version	4.1.21-community-nt
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
+DROP DATABASE homework0807;
 create database homework0807 default character set utf8;
 
 use homework0807;
 
 --
--- Table structure for table `employees`
 --
 
 DROP TABLE IF EXISTS `employees`;
@@ -27,101 +12,105 @@ CREATE TABLE `employees` (
   `Name` varchar(20) NOT NULL default '',
   `BirthDate` datetime default NULL,
   `Country` varchar(15) default NULL,
-  `HomePhone` varchar(24) default NULL,
+  `HomePhone` varchar(24) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `employees`
 --
 
-LOCK TABLES `employees` WRITE;
-/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'簡奉君','1948-12-08 00:00:00','TaiChun','042298886');
-INSERT INTO `employees` VALUES (2,'黃靖輪','1948-12-08 00:00:00','TaiPei','021818111');
-INSERT INTO `employees` VALUES (3,'蔡中穎','1948-12-08 00:00:00','TaiNan','065198336');
-INSERT INTO `employees` VALUES (4,'王燕博','1948-12-08 00:00:00','TaiChun','042298786');
-INSERT INTO `employees` VALUES (5,'林心儀','1948-12-08 00:00:00','TaiPei','021818191');
-INSERT INTO `employees` VALUES (6,'林雨媗','1948-12-08 00:00:00','TaiNan','065198536');
-/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `employees` DISABLE KEYS ;
+INSERT INTO `employees` VALUES (901,'簡奉君','1948-12-08 00:00:00','TaiChun','042298886');
+INSERT INTO `employees` VALUES (902,'黃靖輪','1948-12-08 00:00:00','TaiPei','021818111');
+INSERT INTO `employees` VALUES (903,'蔡中穎','1948-12-08 00:00:00','TaiNan','065198336');
+INSERT INTO `employees` VALUES (904,'王燕博','1948-12-08 00:00:00','TaiChun','042298786');
+INSERT INTO `employees` VALUES (905,'林心儀','1948-12-08 00:00:00','TaiPei','021818191');
+INSERT INTO `employees` VALUES (906,'林雨媗','1948-12-08 00:00:00','TaiNan','065198536');
+ALTER TABLE `employees` ENABLE KEYS ;
 
 
 --
--- Table structure for table `order details`
 --
 
 DROP TABLE IF EXISTS `order details`;
 CREATE TABLE `order details` (
   `OrderID` int(11) NOT NULL default '0',
-  `ProductID` int(11) NOT NULL default '0',
+  `MenuID` int(11) NOT NULL default '0',
   `UnitPrice` decimal(19,4) NOT NULL default '0.0000',
   `Quantity` smallint(6) NOT NULL default '0',
   `Discount` float NOT NULL default '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `order details`
 --
-LOCK TABLES `order details` WRITE;
-/*!40000 ALTER TABLE `order details` DISABLE KEYS */;
-INSERT INTO `order details` VALUES (1,11,'14.0000',12,0),(1,42,'9.8000',10,0),(1,72,'34.8000',5,0),(2,14,'18.6000',9,0),(2,51,'42.4000',40,0),(3,41,'7.7000',10,0),(4,51,'42.4000',35,0.15),(5,65,'16.8000',15,0.15),(5,22,'16.8000',6,0.05),(5,57,'15.6000',15,0.05),(6,65,'16.8000',20,0),
-/*!40000 ALTER TABLE `order details` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `order details` DISABLE KEYS;
+INSERT INTO `order details` VALUES 
+(10001,101,'70',1,0),
+(10001,102,'75',2,0),
+(10001,103,'75',1,0),
+(10002,204,'75',3,0),
+(10002,205,'80',1,0),
+(10003,304,'75',4,0),
+(10004,501,'70',2,0.15),
+(10004,505,'80',1,0.15),
+(10005,402,'70',6,0),
+(10006,604,'75',3,0.05),
+(10006,605,'80',2,0.05);
+
+ALTER TABLE `order details` ENABLE KEYS;
 
 
 --
--- Table structure for table `orders`
 --
 
 
 CREATE TABLE `orders` (
   `OrderID` int(11) NOT NULL default '0',
   `EmployeeID` int(11) default NULL,
-  `OrderDate` datetime default NULL,
+  `OrderDate` datetime default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `orders`
 --
 
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,5,'1996-07-04 00:00:00');
-INSERT INTO `orders` VALUES (2,5,'1996-07-04 00:00:00');
-INSERT INTO `orders` VALUES (3,5,'1996-07-04 00:00:00');
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `orders` DISABLE KEYS ;
+INSERT INTO `orders` VALUES (10001,905,'2020-07-04 00:00:00');
+INSERT INTO `orders` VALUES (10002,906,'2020-07-14 00:00:00');
+INSERT INTO `orders` VALUES (10003,905,'2020-07-24 00:00:00');
+INSERT INTO `orders` VALUES (10004,904,'2020-08-04 00:00:00');
+INSERT INTO `orders` VALUES (10005,902,'2020-08-04 00:00:00');
+INSERT INTO `orders` VALUES (10006,901,'2020-08-04 00:00:00');
+ALTER TABLE `orders` ENABLE KEYS ;
 
 --
--- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE `products` (
-  `ProductID` int(11) NOT NULL default '0',
-  `ProductName` varchar(40) NOT NULL default '',
-  `UnitPrice` decimal(19,4) default NULL,
+DROP TABLE IF EXISTS `Menus`;
+CREATE TABLE `Menus` (
+  `MenuID` int(11) NOT NULL default '0',
+  `MenuName` varchar(40) NOT NULL default '',
+  `UnitPrice` decimal(19,4) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
 --
 
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Chai','18.0000'),(2,'Chang','19.0000'),(3,'Aniseed Syrup','10.0000'),(4,'Chef Anton\'s Cajun Seasoning','22.0000'),(5,'Chef Anton\'s Gumbo Mix','21.3500');
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `Menus` DISABLE KEYS ;
+INSERT INTO `Menus` VALUES (101,'雞排丼飯','70'),(102,'豬排丼飯','75'),(103,'羊排丼飯','75'),(104,'咖哩丼飯','75'),(105,'牛肉丼飯','85');
+INSERT INTO `Menus` VALUES (201,'雞肉拉麵','70'),(202,'豬肉拉麵','75'),(203,'羊肉拉麵','75'),(204,'咖哩拉麵','75'),(205,'咖哩牛肉拉麵','80');
+INSERT INTO `Menus` VALUES (301,'雞排便當','70'),(302,'豬排便當','75'),(303,'羊排便當','75'),(304,'咖哩便當','75'),(305,'咖哩豬排便當','80');
+INSERT INTO `Menus` VALUES (401,'雞排飯團','65'),(402,'豬肉飯團','70'),(403,'羊肉飯團','75'),(404,'泡菜飯團','75'),(405,'牛肉飯團','85');
+INSERT INTO `Menus` VALUES (501,'雞肉涼麵','70'),(502,'豬肉涼麵','75'),(503,'羊肉涼麵','75'),(504,'咖哩涼麵','75'),(505,'咖哩牛肉涼麵','80');
+INSERT INTO `Menus` VALUES (601,'雞排漢堡','70'),(602,'豬排漢堡','75'),(603,'羊肉漢堡','75'),(604,'牛肉便當','75'),(605,'起司牛肉便當','80');
+ALTER TABLE `Menus` ENABLE KEYS ;
 
 
 --
--- Table structure for table `suppliers`
 --
 
-DROP TABLE IF EXISTS `suppliers`;
-CREATE TABLE `suppliers` (
-  `SupplierID` int(11) NOT NULL default '0',
-  `CompanyName` varchar(40) NOT NULL default '',
+DROP TABLE IF EXISTS `restaurants`;
+CREATE TABLE `restaurants` (
+  `restaurantID` int(11) NOT NULL default '0',
+  `restaurantName` varchar(40) NOT NULL default '',
   `ContactName` varchar(30) default NULL,
   `ContactTitle` varchar(30) default NULL,
   `Address` varchar(60) default NULL,
@@ -130,21 +119,14 @@ CREATE TABLE `suppliers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `suppliers`
 --
 
-LOCK TABLES `suppliers` WRITE;
-/*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
-INSERT INTO `suppliers` VALUES (1,'Exotic Liquids','Charlotte Cooper','Purchasing Manager','49 Gilbert St.','(03) 3555-5011',NULL);
-INSERT INTO `suppliers` VALUES (2,'Exotic Liquids','Charlotte Cooper','Purchasing Manager','49 Gilbert St.','(03) 3555-5011',NULL);
-INSERT INTO `suppliers` VALUES (3,'Exotic Liquids','Charlotte Cooper','Purchasing Manager','49 Gilbert St.','(03) 3555-5011',NULL);
-/*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER TABLE `restaurants` DISABLE KEYS ;
+INSERT INTO `restaurants` VALUES (1,'日式丼飯','林丼飯','店長','台中西屯區西屯路二段1000號','(03) 3585-5921',NULL);
+INSERT INTO `restaurants` VALUES (2,'拉麵達人','江拉麵','店長','台中西屯區逢甲路二段987號','(03) 4595-6633',NULL);
+INSERT INTO `restaurants` VALUES (3,'親民便當','何便當','店經理','台中西屯區英林路二段587號','(03) 3755-9512',NULL);
+INSERT INTO `restaurants` VALUES (4,'手工飯糰','陳飯糰','店長','台中西屯區河南路七段666號','(03) 3556-5991',NULL);
+INSERT INTO `restaurants` VALUES (5,'手打涼麵','黃涼麵','店經理','台中西屯區何東路八段777號','(03) 2155-3211',NULL);
+INSERT INTO `restaurants` VALUES (6,'美味漢堡','王翰保','店長','台中西屯區西屯路一段123號','(03) 3555-5011',NULL);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+ALTER TABLE `restaurants` ENABLE KEYS ;
